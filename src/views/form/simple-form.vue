@@ -11,10 +11,10 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="性别" prop="sex">
-            <el-select v-model="form.sex">
-              <el-option label="男" value="1" />
-              <el-option label="女" value="2" />
-            </el-select>
+            <el-radio-group v-model="form.sex">
+              <el-radio label="男" value="1" />
+              <el-radio label="女" value="2" />
+            </el-radio-group>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -51,7 +51,6 @@
         </el-col>
         <el-col>
           <el-button type="primary" @click="handleSubmit">提交</el-button>
-          <el-button @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
     </el-form>
@@ -81,7 +80,7 @@ export default {
       },
       rules: {
         fullName: [{ required: true, message: '姓名不能为空', trigger: ['blur', 'change'] },
-          { min: 3, max: 10, pattern: /^[\u4E00-\u9FA5]{2,4}$/, message: '请输入2-4个汉字', trigger: ['blur', 'change'] }],
+          { pattern: /^[\u4E00-\u9FA5]{2,4}$/, message: '请输入2-4个汉字', trigger: ['blur', 'change'] }],
         sex: [{ required: true, message: '性别不能为空', trigger: ['blur', 'change'] }],
         mobilePhone: [{ required: true, message: '手机号不能为空', trigger: ['blur', 'change'] },
           { pattern: /^1[3456789]\d{9}$/, message: '请输入正确的手机号', trigger: ['blur', 'change'] }],
@@ -99,9 +98,6 @@ export default {
     async handleSubmit() {
       await this.$refs.form.validate()
       this.$message.success('验证通过')
-    },
-    handleReset() {
-      this.$refs.form.resetFields()
     }
   }
 }
