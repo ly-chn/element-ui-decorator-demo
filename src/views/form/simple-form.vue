@@ -2,7 +2,7 @@
   <div style="padding: 100px">
     用户资料完善展示, 含有部分业务相关不合理逻辑, 仅供参考
     <div style="height: 20px" />
-    <el-form :model="form" :rules="rules" label-width="auto">
+    <el-form ref="form" :model="form" :rules="rules" label-width="auto">
       <el-row>
         <el-col :span="12">
           <el-form-item label="姓名" prop="fullName">
@@ -49,6 +49,10 @@
             <el-input v-model="form.introduction" type="textarea" maxlength="100" show-word-limit />
           </el-form-item>
         </el-col>
+        <el-col>
+          <el-button type="primary" @click="handleSubmit">提交</el-button>
+          <el-button @click="handleReset">重置</el-button>
+        </el-col>
       </el-row>
     </el-form>
   </div>
@@ -89,6 +93,15 @@ export default {
         introduction: [{ required: true, message: '个人介绍不能为空', trigger: ['blur', 'change'] },
           { min: 10, max: 100, message: '请输入10-100个字符', trigger: ['blur', 'change'] }]
       }
+    }
+  },
+  methods: {
+    async handleSubmit() {
+      await this.$refs.form.validate()
+      this.$message.success('验证通过')
+    },
+    handleReset() {
+      this.$refs.form.resetFields()
     }
   }
 }
