@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 100px">
-    用户资料完善展示
+    用户资料完善展示, 含有部分业务相关不合理逻辑, 仅供参考
     <div style="height: 20px" />
     <el-form :model="form" :rules="rules" label-width="auto">
       <el-row>
