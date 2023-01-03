@@ -10,21 +10,16 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="性别" prop="sex">
-            <el-radio-group v-model="form.sex">
-              <el-radio label="男" value="1" />
-              <el-radio label="女" value="2" />
-            </el-radio-group>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
           <el-form-item label="手机号" prop="mobilePhone">
             <el-input v-model="form.mobilePhone" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="身份证号" prop="idCard">
-            <el-input v-model="form.idCard" />
+          <el-form-item label="勿扰" prop="dnd">
+            <el-radio-group v-model="form.dnd">
+              <el-radio label="是" value="true" />
+              <el-radio label="否" value="false" />
+            </el-radio-group>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -65,8 +60,8 @@ export default {
       form: {
         // 姓名
         fullName: undefined,
-        // 性别
-        sex: undefined,
+        // 勿扰
+        dnd: 'true',
         // 手机号
         mobilePhone: undefined,
         // 身份证号
@@ -81,7 +76,6 @@ export default {
       rules: {
         fullName: [{ required: true, message: '姓名不能为空', trigger: ['blur', 'change'] },
           { pattern: /^[\u4E00-\u9FA5]{2,4}$/, message: '请输入2-4个汉字', trigger: ['blur', 'change'] }],
-        sex: [{ required: true, message: '性别不能为空', trigger: ['blur', 'change'] }],
         mobilePhone: [{ required: true, message: '手机号不能为空', trigger: ['blur', 'change'] },
           { pattern: /^1[3456789]\d{9}$/, message: '请输入正确的手机号', trigger: ['blur', 'change'] }],
         idCard: [{ required: true, message: '身份证号不能为空', trigger: ['blur', 'change'] },
