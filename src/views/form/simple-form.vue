@@ -15,10 +15,10 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="勿扰" prop="dnd">
-            <el-radio-group v-model="form.dnd">
-              <el-radio label="是" value="true" />
-              <el-radio label="否" value="false" />
+          <el-form-item label="政治面貌" prop="politicalStatus">
+            <el-radio-group v-model="form.politicalStatus">
+              <el-radio label="党员" value="1" />
+              <el-radio label="群众" value="2" />
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -46,6 +46,7 @@
         </el-col>
         <el-col>
           <el-button type="primary" @click="handleSubmit">提交</el-button>
+          <el-button @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
     </el-form>
@@ -60,8 +61,8 @@ export default {
       form: {
         // 姓名
         fullName: undefined,
-        // 勿扰
-        dnd: 'true',
+        // 政治面貌
+        politicalStatus: 'true',
         // 手机号
         mobilePhone: undefined,
         // 身份证号
@@ -76,6 +77,7 @@ export default {
       rules: {
         fullName: [{ required: true, message: '姓名不能为空', trigger: ['blur', 'change'] },
           { pattern: /^[\u4E00-\u9FA5]{2,4}$/, message: '请输入2-4个汉字', trigger: ['blur', 'change'] }],
+        politicalStatus: [{ required: true, message: '政治面貌不能为空', trigger: ['blur', 'change'] }],
         mobilePhone: [{ required: true, message: '手机号不能为空', trigger: ['blur', 'change'] },
           { pattern: /^1[3456789]\d{9}$/, message: '请输入正确的手机号', trigger: ['blur', 'change'] }],
         idCard: [{ required: true, message: '身份证号不能为空', trigger: ['blur', 'change'] },
@@ -92,6 +94,9 @@ export default {
     async handleSubmit() {
       await this.$refs.form.validate()
       this.$message.success('验证通过')
+    },
+    handleReset() {
+      this.$refs.form.resetFields()
     }
   }
 }
