@@ -63,10 +63,16 @@ export const constantRoutes = [
     meta: { title: 'Example', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'form',
-        name: 'Form',
-        component: () => import('@/views/form/simple-form'),
-        meta: { title: '基础写法' }
+        path: 'simple-form',
+        name: 'simple-form',
+        component: () => import('@/views/form/simple-form.vue'),
+        meta: { title: '表单基础写法' }
+      },
+      {
+        path: 'preview-button',
+        name: 'preview-button',
+        component: () => import('@/views/form/preview-button.vue'),
+        meta: { title: '按钮预览' }
       }
     ]
   },

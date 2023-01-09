@@ -6,7 +6,7 @@ import LyBtnReset from '@/components/ly/form/buttons/ly-btn-reset.vue'
 import LyBtnRemove from '@/components/ly/form/buttons/ly-btn-remove.vue'
 import LyBtnSearch from '@/components/ly/form/buttons/ly-btn-search.vue'
 
-export default Vue => {
+export const LyComponent = Vue => {
   // 按钮
   Vue.component(LyBtnCreate.name, LyBtnCreate)
   Vue.component(LyBtnExport.name, LyBtnExport)

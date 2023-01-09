@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import FormButtonMixin from './mixins/form-button-mixin'
+import { FormButtonMixin } from './mixins/form-button-mixin'
 
 export default {
   name: 'LyBtnReset',
