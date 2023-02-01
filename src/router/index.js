@@ -73,21 +73,15 @@ export const constantRoutes = [
         name: 'preview-button',
         component: () => import('@/views/form/preview-button.vue'),
         meta: { title: '按钮预览' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
+      },
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'form-day1-demo',
+        name: 'form-day1-demo',
+        component: () => import('@/views/form/form-day1-demo.vue'),
+        meta: { title: '表单day1' }
       }
     ]
   },
-
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
